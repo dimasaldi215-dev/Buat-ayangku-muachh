@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special for Josellyn ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; }
+        
+        body {
+            background-color: #111; /* Fallback color */
+            background-image: url('https://wallpaperaccess.com/full/266210.jpg'); /* Background Pemandangan */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Penting agar hati tidak bikin scrollbar */
+            position: relative;
+        }
+
+        /* --- ANIMASI HATI BERJATUHAN (RAIN) --- */
+        .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .heart { position: absolute; display: block; width: 0; height: 0; opacity: 0; animation: fall linear infinite; color: #ff69b4; }
+        .heart::before, .heart::after { content: ""; position: absolute; background: currentColor; width: 10px; height: 16px; border-radius: 10px 10px 0 0; }
+        .heart::before { transform: rotate(-45deg); left: 6px; }
+        .heart::after { transform: rotate(45deg); left: 0; }
+
+        @keyframes fall {
+            0% { top: -10%; opacity: 0; transform: scale(0.5); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 110%; opacity: 0; transform: scale(1.2) rotate(360deg); }
+        }
+
+        /* --- HALAMAN AWAL (AMPLOP) --- */
+        #halamanAwal { text-align: center; z-index: 10; }
+        #envelopeIcon { 
+            font-size: 100px; 
+            cursor: pointer; 
+            filter: drop-shadow(0 0 15px rgba(255,105,180,0.5));
+            /* ANIMASI PULSE (BERDENYUT) */
+            animation: pulse 2s infinite; 
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 25px rgba(255,105,180,0.8)); }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        .btn-buka {
+            margin-top: 25px;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,20,147,0.4);
+            transition: 0.3s;
+        }
+        .btn-buka:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,20,147,0.6); }
+
+        /* --- HALAMAN PESAN --- */
+        #halamanPesan {
+            display: none; /* Awalnya sembunyi */
+            background: rgba(15, 23, 42, 0.92); /* Dark Transparan */
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            z-index: 10;
+            /* ANIMASI FADE IN (MUNCUL HALUS) */
+            animation: fadeIn 1s ease-out; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .gif-container img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid #ff1493;
+            margin-bottom: 25px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255,20,147,0.5);
+        }
+
+        h1 { color: white; font-size: 1.3rem; margin-bottom: 15px; letter-spacing: 0.5px; }
+        p { color: #cbd5e1; line-height: 1.7; font-size: 0.95rem; margin-bottom: 30px; }
+
+        .btn-wrapper { display: flex; justify-content: center; gap: 15px; min-height: 50px; position: relative; }
+        .btn-pilihan {
+            padding: 12px 28px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 12px;
+            border: 1px solid #475569;
+            background: #1e293b;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-pilihan:hover { background: #334155; transform: translateY(-2px); }
+
+        #noBtn { position: relative; z-index: 999; transition: all 0.1s ease; /* Mulus saat lari */ }
+        #yesBtn { background: linear-gradient(45deg, #2e7d32, #43a047); border: none; } /* Hijau Sukses */
+        #yesBtn:hover { background: linear-gradient(45deg, #1b5e20, #2e7d32); }
+
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="heartsContainer"></div>
+
+    <div id="halamanAwal">
+        <div id="envelopeIcon" onclick="bukaPesan()">✉️</div>
+        <button class="btn-buka" onclick="bukaPesan()">Buka Pesan</button>
+    </div>
+
+    <div id="halamanPesan">
+        <div class="gif-container">
+            <img id="mainGif" src="https://i.ibb.co.com/5xWJSc1d/1000658021.gif" alt="Panda Cute">
+        </div>
+
+        <h1 id="title">Minal 'Aidin Wal Faizin ✨ — ♡.′</h1>
+        <p id="message">
+            Mohon maaf lahir dan batin dari aku untuk kamuuu <b>Josellyn</b> 🤗<br><br>
+            Aku mau minta maaf atas semua kesalahan yang mungkin pernah aku lakukan kepadamu yaa 😁
